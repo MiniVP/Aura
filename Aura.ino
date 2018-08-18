@@ -17,6 +17,7 @@
 
 #define SD_OK
 #define RTC_OK
+//#define RTC_SET
 #define DEBUG
 
 #ifdef DEBUG
@@ -52,8 +53,9 @@ String output = "";
 
 void setup() {
   pinMode(PPD_PIN, INPUT);
+  
   Serial.begin(115200);
-
+  
   DEBUG_PRINT("Starting...");
 
   #ifdef SD_OK
@@ -71,22 +73,25 @@ void setup() {
 
   #ifdef RTC_OK
     rtc.begin();
-    rtc.setDOW(MONDAY);
-    rtc.setTime(10, 50, 0);
-    rtc.setDate(18, 8, 2018);
+    #ifdef RTC_SET
+      rtc.setDOW(SATURDAY);
+      rtc.setTime(12, 6, 0);
+      rtc.setDate(18, 8, 2018);
+    #endif
     DEBUG_PRINT("RTC init OK");
     DEBUG_PRINT(rtc.getDateStr());
     DEBUG_PRINT(rtc.getTimeStr());
+    DEBUG_PRINT(readVccAtmega());
   #endif
-  
-  starttime = millis();
 
   DEBUG_PRINT("Ready ! Data printed each 30 seconds");
+  
+  starttime = millis();
 }
 
 void loop() {
   duration = pulseIn(PPD_PIN, LOW);
-  lowpulseoccupancy = lowpulseoccupancy+duration;
+  lowpulseoccupancy = lowpulseoccupancy + duration;
 
   if ((millis()-starttime) > sampletime_ms)
   {
@@ -100,6 +105,10 @@ void loop() {
       output.concat(rtc.getTemp());
       output.concat(',');
     #endif
+    output.concat(readVccAtmega());
+    output.concat(',');
+    output.concat(readTempAtmega());
+    output.concat(',');
     output.concat(lowpulseoccupancy);
     output.concat(',');
     output.concat(ratio);
@@ -119,5 +128,29 @@ void loop() {
     output = "";
     starttime = millis();
   }
+}
+
+long readTempAtmega() { 
+  long result; // Read temperature sensor against 1.1V reference 
+  ADMUX = _BV(REFS1) | _BV(REFS0) | _BV(MUX3); 
+  delay(2); // Wait for Vref to settle 
+  ADCSRA |= _BV(ADSC); // Convert 
+  while (bit_is_set(ADCSRA,ADSC)); 
+  result = ADCL; 
+  result |= ADCH<<8; 
+  result = (result - 125) * 1075; 
+  return result;
+}
+
+long readVccAtmega() { 
+  long result; // Read 1.1V reference against AVcc 
+  ADMUX = _BV(REFS0) | _BV(MUX3) | _BV(MUX2) | _BV(MUX1); 
+  delay(2); // Wait for Vref to settle 
+  ADCSRA |= _BV(ADSC); // Convert 
+  while (bit_is_set(ADCSRA,ADSC)); 
+  result = ADCL; 
+  result |= ADCH<<8; 
+  result = 1126400L / result; // Back-calculate AVcc in mV 
+  return result; 
 }
 
