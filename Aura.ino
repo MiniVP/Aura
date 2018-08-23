@@ -26,6 +26,8 @@
  #define DEBUG_PRINT(x)
 #endif
 
+#define LED_PIN 9
+
 #ifdef SD_OK
   #include <SPI.h>
   #include <SD.h>
@@ -52,7 +54,27 @@ float concentration = 0;
 String output = "";
 
 void setup() {
+  // The following saves some extra power by disabling some 
+  // peripherals I am not using.
+  
+  // Disable the ADC by setting the ADEN bit (bit 7)  of the
+  // ADCSRA register to zero.
+  ADCSRA = ADCSRA & B01111111;
+  
+  // Disable the analog comparator by setting the ACD bit
+  // (bit 7) of the ACSR register to one.
+  ACSR = B10000000;
+  
+  // Disable digital input buffers on all analog input pins
+  // by setting bits 0-5 of the DIDR0 register to one.
+  // Of course, only do this if you are not using the analog 
+  // inputs for your project.
+  DIDR0 = DIDR0 | B00111111;
+
   pinMode(PPD_PIN, INPUT);
+  pinMode(LED_PIN, OUTPUT);
+
+  digitalWrite(LED_PIN, HIGH);
   
   Serial.begin(115200);
   
@@ -61,11 +83,13 @@ void setup() {
   #ifdef SD_OK
     if (!SD.begin(SD_CS_PIN)) {
       DEBUG_PRINT(F("SD initialisation failed"));
+      blink(4);
     } else {
       DEBUG_PRINT("SD init OK");
       dataFile = SD.open(F("data.csv"), FILE_WRITE);
       if (!dataFile) {
         DEBUG_PRINT(F("File opening failed"));
+        blink(8);
       }
       DEBUG_PRINT("SD File data.csv opened OK");
     }
@@ -75,14 +99,16 @@ void setup() {
     rtc.begin();
     #ifdef RTC_SET
       rtc.setDOW(SATURDAY);
-      rtc.setTime(12, 6, 0);
-      rtc.setDate(18, 8, 2018);
+      rtc.setTime(20, 41, 0);
+      rtc.setDate(23, 8, 2018);
     #endif
     DEBUG_PRINT("RTC init OK");
     DEBUG_PRINT(rtc.getDateStr());
     DEBUG_PRINT(rtc.getTimeStr());
-    DEBUG_PRINT(readVccAtmega());
+    //DEBUG_PRINT(readVccAtmega());
   #endif
+
+  digitalWrite(LED_PIN, LOW);
 
   DEBUG_PRINT("Ready ! Data printed each 30 seconds");
   
@@ -105,14 +131,8 @@ void loop() {
       output.concat(rtc.getTemp());
       output.concat(',');
     #endif
-    output.concat(readVccAtmega());
-    output.concat(',');
-    output.concat(readTempAtmega());
-    output.concat(',');
-    output.concat(lowpulseoccupancy);
-    output.concat(',');
-    output.concat(ratio);
-    output.concat(',');
+    //output.concat(readVccAtmega());
+    //output.concat(',');
     output.concat(concentration);
     
     DEBUG_PRINT(output);
@@ -152,5 +172,18 @@ long readVccAtmega() {
   result |= ADCH<<8; 
   result = 1126400L / result; // Back-calculate AVcc in mV 
   return result; 
+}
+
+void blink(byte nb) { 
+  while (true) {
+    for (byte i = 0; i < nb; i++) {
+      digitalWrite(LED_PIN, LOW);
+      delay(250);
+      digitalWrite(LED_PIN, HIGH);
+      delay(250);
+    }
+
+    delay(1500);
+  }
 }
 
