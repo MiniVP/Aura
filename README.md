@@ -23,11 +23,12 @@ Arduino Uno | Components
 ----------- | ----------
 5V          | PPD42NS port 3
 3.3V        | SD 3V3, RTC VCC
-GND         | PPD42NS port 1, RTC GND, SD GND
+GND         | PPD42NS port 1, RTC GND, SD GND, LED GND
 SDA         | RTC SDA
 SCL         | RTC SCL
 D4          | SD CS
 D8          | PPD42NS port 4
+D9          | LED
 D11         | SD MOSI
 D12         | SD MISO
 D13         | SD CLK
