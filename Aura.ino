@@ -15,8 +15,8 @@
  RTC SCL => SCL
  */
 
-#define SD_OK
-#define RTC_OK
+#define USE_SD
+#define USE_RTC
 //#define RTC_SET
 #define DEBUG
 
@@ -28,7 +28,7 @@
 
 #define LED_PIN 9
 
-#ifdef SD_OK
+#ifdef USE_SD
   #include <SPI.h>
   #include <SD.h>
   
@@ -37,7 +37,7 @@
   File dataFile;
 #endif
 
-#ifdef RTC_OK
+#ifdef USE_RTC
   #include <DS3231.h>
   
   DS3231 rtc(SDA, SCL);
@@ -78,31 +78,31 @@ void setup() {
   
   Serial.begin(115200);
   
-  DEBUG_PRINT("Starting...");
+  DEBUG_PRINT(F("Starting..."));
 
-  #ifdef SD_OK
+  #ifdef USE_SD
     if (!SD.begin(SD_CS_PIN)) {
       DEBUG_PRINT(F("SD initialisation failed"));
       blink(4);
     } else {
-      DEBUG_PRINT("SD init OK");
+      DEBUG_PRINT(F("SD init OK"));
       dataFile = SD.open(F("data.csv"), FILE_WRITE);
       if (!dataFile) {
         DEBUG_PRINT(F("File opening failed"));
         blink(8);
       }
-      DEBUG_PRINT("SD File data.csv opened OK");
+      DEBUG_PRINT(F("SD File data.csv opened OK"));
     }
   #endif
 
-  #ifdef RTC_OK
+  #ifdef USE_RTC
     rtc.begin();
     #ifdef RTC_SET
       rtc.setDOW(SATURDAY);
       rtc.setTime(20, 41, 0);
       rtc.setDate(23, 8, 2018);
     #endif
-    DEBUG_PRINT("RTC init OK");
+    DEBUG_PRINT(F("RTC init OK"));
     DEBUG_PRINT(rtc.getDateStr());
     DEBUG_PRINT(rtc.getTimeStr());
     //DEBUG_PRINT(readVccAtmega());
@@ -123,7 +123,7 @@ void loop() {
   {
     ratio = lowpulseoccupancy/(sampletime_ms*10.0);  // Integer percentage 0=>100
     concentration = 1.1*pow(ratio,3)-3.8*pow(ratio,2)+520*ratio+0.62; // using spec sheet curve
-    #ifdef RTC_OK
+    #ifdef USE_RTC
       output.concat(rtc.getDateStr());
       output.concat(',');
       output.concat(rtc.getTimeStr());
@@ -137,7 +137,7 @@ void loop() {
     
     DEBUG_PRINT(output);
 
-    #ifdef SD_OK
+    #ifdef USE_SD
       if (dataFile) {
         dataFile.println(output);
         dataFile.flush();
