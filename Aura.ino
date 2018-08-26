@@ -47,7 +47,7 @@
 
 unsigned long duration;
 unsigned long starttime;
-const unsigned long sampletime_ms = 30000;
+const unsigned long sampletime_ms = 300000;
 unsigned long lowpulseoccupancy = 0;
 float ratio = 0;
 float concentration = 0;
