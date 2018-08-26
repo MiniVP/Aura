@@ -18,6 +18,7 @@
 #define USE_SD
 #define USE_RTC
 //#define RTC_SET
+//#define READ_VOLTAGE
 #define DEBUG
 
 #ifdef DEBUG
@@ -54,22 +55,24 @@ float concentration = 0;
 String output = "";
 
 void setup() {
-  // The following saves some extra power by disabling some 
-  // peripherals I am not using.
-  
-  // Disable the ADC by setting the ADEN bit (bit 7)  of the
-  // ADCSRA register to zero.
-  ADCSRA = ADCSRA & B01111111;
-  
-  // Disable the analog comparator by setting the ACD bit
-  // (bit 7) of the ACSR register to one.
-  ACSR = B10000000;
-  
-  // Disable digital input buffers on all analog input pins
-  // by setting bits 0-5 of the DIDR0 register to one.
-  // Of course, only do this if you are not using the analog 
-  // inputs for your project.
-  DIDR0 = DIDR0 | B00111111;
+  #ifndef READ_VOLTAGE
+    // The following saves some extra power by disabling some 
+    // peripherals I am not using.
+    
+    // Disable the ADC by setting the ADEN bit (bit 7)  of the
+    // ADCSRA register to zero.
+    ADCSRA = ADCSRA & B01111111;
+    
+    // Disable the analog comparator by setting the ACD bit
+    // (bit 7) of the ACSR register to one.
+    ACSR = B10000000;
+    
+    // Disable digital input buffers on all analog input pins
+    // by setting bits 0-5 of the DIDR0 register to one.
+    // Of course, only do this if you are not using the analog 
+    // inputs for your project.
+    DIDR0 = DIDR0 | B00111111;
+  #endif
 
   pinMode(PPD_PIN, INPUT);
   pinMode(LED_PIN, OUTPUT);
@@ -105,7 +108,9 @@ void setup() {
     DEBUG_PRINT(F("RTC init OK"));
     DEBUG_PRINT(rtc.getDateStr());
     DEBUG_PRINT(rtc.getTimeStr());
-    //DEBUG_PRINT(readVccAtmega());
+    #ifdef READ_VOLTAGE
+      DEBUG_PRINT(readVccAtmega());
+    #endif
   #endif
 
   digitalWrite(LED_PIN, LOW);
@@ -131,8 +136,10 @@ void loop() {
       output.concat(rtc.getTemp());
       output.concat(',');
     #endif
-    //output.concat(readVccAtmega());
-    //output.concat(',');
+    #ifdef READ_VOLTAGE
+      output.concat(readVccAtmega());
+      output.concat(',');
+    #endif
     output.concat(concentration);
     
     DEBUG_PRINT(output);
