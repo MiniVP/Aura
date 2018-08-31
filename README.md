@@ -1,4 +1,4 @@
-# Aura
+![MiniVP Aura](img/banner.png)
 
 First MiniVP weather station prototype with a PPD42NS particulate matter sensor. In roman and greek mythology, Aura is a minor deity whose name means breeze.
 

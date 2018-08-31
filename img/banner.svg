@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="305.09207mm"
+   height="78.57724mm"
+   viewBox="0 0 305.09207 78.57724"
+   version="1.1"
+   id="svg483"
+   inkscape:version="0.92.2 2405546, 2018-03-11"
+   sodipodi:docname="banner.svg"
+   inkscape:export-filename="/home/lucidiot/Arduino/Aura/img/logo.png"
+   inkscape:export-xdpi="140.28999"
+   inkscape:export-ydpi="140.28999">
+  <title
+     id="title5037">Logo MiniVP Aura avec titre</title>
+  <defs
+     id="defs477">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient5031">
+      <stop
+         style="stop-color:#ffd42a;stop-opacity:1"
+         offset="0"
+         id="stop5027" />
+      <stop
+         style="stop-color:#ffd42a;stop-opacity:0"
+         offset="1"
+         id="stop5029" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5031"
+       id="linearGradient5033"
+       x1="75.102737"
+       y1="77.838989"
+       x2="116.5295"
+       y2="24.652351"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(6.1471988,5.3453902)" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.46190477"
+     inkscape:cx="676.91935"
+     inkscape:cy="510.9899"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="838"
+     inkscape:window-height="1013"
+     inkscape:window-x="2120"
+     inkscape:window-y="18"
+     inkscape:window-maximized="0"
+     showguides="false" />
+  <metadata
+     id="metadata480">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Logo MiniVP Aura avec titre</dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by-nc-sa/4.0/" />
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Lucidiot</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>MiniVP</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:prohibits
+           rdf:resource="http://creativecommons.org/ns#CommercialUse" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#ShareAlike" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-81.249937,-4.6071383)">
+    <path
+       style="fill:url(#linearGradient5033);fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 81.249937,83.184378 171.8543,63.673703 94.880685,4.6071383 Z"
+       id="path4212"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:6.16499996;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;paint-order:stroke markers fill"
+       id="path487"
+       cx="99.557899"
+       cy="34.407688"
+       r="4.6772165" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:6.16499996;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;paint-order:stroke markers fill"
+       id="path493"
+       cx="107.44234"
+       cy="14.496108"
+       r="4.2763124" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:6.16499996;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;paint-order:stroke markers fill"
+       id="path495"
+       cx="122.2758"
+       cy="35.209496"
+       r="8.4189901" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:6.16499996;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;paint-order:stroke markers fill"
+       id="path497"
+       cx="115.86134"
+       cy="56.323788"
+       r="3.8754082" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:6.16499996;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;paint-order:stroke markers fill"
+       id="path499"
+       cx="138.84651"
+       cy="26.389603"
+       r="2.5390604" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:6.16499996;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;paint-order:stroke markers fill"
+       id="path501"
+       cx="145.52824"
+       cy="41.623962"
+       r="5.2117558" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:6.16499996;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;paint-order:stroke markers fill"
+       id="path503"
+       cx="139.24744"
+       cy="57.793777"
+       r="2.6726952" />
+    <circle
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:6.16499996;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;paint-order:stroke markers fill"
+       id="path505"
+       cx="155.28358"
+       cy="60.1992"
+       r="1.8708867" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot5077"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:192px;line-height:1.25;font-family:'Waukegan LDO';-inkscape-font-specification:'Waukegan LDO';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       transform="matrix(0.26458333,0,0,0.26458333,76.773839,-13.436354)"><flowRegion
+         id="flowRegion5079"
+         style="font-size:192px"><rect
+           id="rect5081"
+           width="966.73163"
+           height="257.94818"
+           x="399.55179"
+           y="73.480774"
+           style="font-size:192px" /></flowRegion><flowPara
+         id="flowPara5083"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:160px;font-family:Eurostile;-inkscape-font-specification:Eurostile">minivp <flowSpan
+   style="font-weight:bold;font-size:160px"
+   id="flowSpan5085">aura</flowSpan></flowPara></flowRoot>  </g>
+</svg>
