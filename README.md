@@ -2,6 +2,8 @@
 
 First MiniVP weather station prototype with a PPD42NS particulate matter sensor. In roman and greek mythology, Aura is a minor deity whose name means breeze.
 
+> Mirrored to GitHub from https://gitlab.com/MiniVP/Aura
+
 ## Components
 
 * Arduino (tested with Uno R3)
