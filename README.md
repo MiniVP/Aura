@@ -46,10 +46,10 @@ D13         | SD CLK
 7. Once the RTC clock has been set once, you can comment the previously edited `rtc.set` instructions to prevent a clock reset at each Arduino reboot.
 8. Resend the firmware to the Arduino.
 
-# Error codes
+# Troubleshooting
 
-The digital 9 pin is connected to a LED that is only used to indicate errors on startup. The LED should blink once at startup to indicate the LED itself works, then never turn on again.
+* **The LED turns on, then blinks 4 times in a loop** : The SD card initialization failed. Check the pinout and connection to the SD card reader and check the SD card is properly plugged in and works on another device.
+* **The LED turns on, then blinks 8 times in a loop** : The SD card was properly initialized but the `DATA.CSV` file could not be opened. Check that the card or file is not read-only, that there is still some disk space on the card, and that the card is properly formatted in FAT16 or FAT32 format as per the [Arduino recommendations](https://www.arduino.cc/en/Reference/SDCardNotes).
+* **The LED turns on and does not turn off** : The Arduino is stuck while trying to initialize the real-time clock. Check its pinout and connection and try again.
 
-* If the LED blinks 4 times, stays on for 1.5 second, then blinks again : The SD card initialization failed. Check your card, your card reader and the proper connection of the reader on the board.
-* If the LED blinks 8 times, stays on for 1.5 second, then blinks again : The SD card was initialized, but the board could not open the `DATA.CSV` file for writing. Check the card has enough space or the file does not already exist and is not read-only.
-
+By enabling the `DEBUG` preprocessor directive, you will be able to get logs sent back to you, particularly during the initialization process, that may be useful for troubleshooting the board.
